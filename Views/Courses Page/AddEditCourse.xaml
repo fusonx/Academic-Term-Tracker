@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CapstoneMobileApp.Courses_Page.AddEditCourse">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" x:Name="SaveCourse" Clicked="CourseSaved_Clicked"></ToolbarItem>
+        <ToolbarItem Text="Cancel" x:Name="CancelCourse" Clicked="CourseCancel_Clicked"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <VerticalStackLayout>
+        <VerticalStackLayout Margin="9">
+            <Grid ColumnDefinitions="*,*" Margin="12">
+                <Label Text="Course Name" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                <Editor x:Name="EditorCourseName" Grid.Column="1" />
+            </Grid>
+
+            <Grid ColumnDefinitions="*,*" Margin="12">
+                <Label Text="Start Date" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                <DatePicker x:Name="CourseStartDate" Grid.Column="1" />
+            </Grid>
+
+            <Grid ColumnDefinitions="*,*" Margin="12">
+                <Label Text="End Date" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                <DatePicker x:Name="CourseEndDate" Grid.Column="1" />
+            </Grid>
+
+            <Grid ColumnDefinitions="*,*" Margin="12">
+                <Label Text="Due Date" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"  />
+                <DatePicker x:Name="CourseDueDate" Grid.Column="1" />
+            </Grid>
+
+            <Grid ColumnDefinitions="*,*" Margin="12">
+                <Label Text="Course Status" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                <Picker x:Name="CourseStatus" Grid.Column="1">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>In progress</x:String>
+                            <x:String>Completed</x:String>
+                            <x:String>Dropped</x:String>
+                            <x:String>Plan to take</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </Grid>
+
+            <Grid ColumnDefinitions="*,*" Margin="12">
+                <Label Text="Start Notification" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                <Picker x:Name="StartNotification" Grid.Column="1">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>On</x:String>
+                            <x:String>Off</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </Grid>
+
+            <Grid ColumnDefinitions="*,*" Margin="12">
+                <Label Text="End Notification" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                <Picker x:Name="EndNotification" Grid.Column="1">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>On</x:String>
+                            <x:String>Off</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </Grid>
+
+            <Grid ColumnDefinitions="*,*" Margin="12">
+                <Label Text="Instructor Name" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                <Editor x:Name="EditorInstructorName" Grid.Column="1"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="*,*" Margin="12">
+                <Label Text="Instructor Phone #" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                <Editor x:Name="EditorInstructorNumber" Grid.Column="1"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="*,*" Margin="12">
+                <Label Text="Instructor E-mail" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                <Editor x:Name="EditorInstructorEmail" Grid.Column="1"/>
+            </Grid>
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

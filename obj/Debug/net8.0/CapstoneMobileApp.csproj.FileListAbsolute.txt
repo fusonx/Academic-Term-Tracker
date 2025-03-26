@@ -1,0 +1,14 @@
+C:\D424\CapstoneMobileApp\bin\Debug\net8.0\CapstoneMobileApp.deps.json
+C:\D424\CapstoneMobileApp\bin\Debug\net8.0\CapstoneMobileApp.dll
+C:\D424\CapstoneMobileApp\bin\Debug\net8.0\CapstoneMobileApp.pdb
+C:\D424\CapstoneMobileApp\obj\Debug\net8.0\CapstoneMobileApp.csproj.AssemblyReference.cache
+C:\D424\CapstoneMobileApp\obj\Debug\net8.0\CapstoneMobileApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\D424\CapstoneMobileApp\obj\Debug\net8.0\CapstoneMobileApp.AssemblyInfoInputs.cache
+C:\D424\CapstoneMobileApp\obj\Debug\net8.0\CapstoneMobileApp.AssemblyInfo.cs
+C:\D424\CapstoneMobileApp\obj\Debug\net8.0\CapstoneMobileApp.csproj.CoreCompileInputs.cache
+C:\D424\CapstoneMobileApp\obj\Debug\net8.0\CapstoneMobileApp.sourcelink.json
+C:\D424\CapstoneMobileApp\obj\Debug\net8.0\XamlC.stamp
+C:\D424\CapstoneMobileApp\obj\Debug\net8.0\CapstoneMobileApp.dll
+C:\D424\CapstoneMobileApp\obj\Debug\net8.0\refint\CapstoneMobileApp.dll
+C:\D424\CapstoneMobileApp\obj\Debug\net8.0\CapstoneMobileApp.pdb
+C:\D424\CapstoneMobileApp\obj\Debug\net8.0\ref\CapstoneMobileApp.dll

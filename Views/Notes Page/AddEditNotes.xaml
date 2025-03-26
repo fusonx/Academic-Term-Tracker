@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CapstoneMobileApp.Notes_Page.AddEditNotes">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Share" x:Name="ShareNote" Clicked="ShareNote_Clicked"></ToolbarItem>
+        <ToolbarItem Text="Save" x:Name="SaveNote" Clicked="SaveNote_Clicked"></ToolbarItem>
+        <ToolbarItem Text="Delete" x:Name="DeleteNote" Clicked="DeleteNote_Clicked"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <VerticalStackLayout Margin="9" Padding="9">
+        <Editor x:Name="NoteEditor"
+            Placeholder="Enter your note"
+            HeightRequest="250" />
+
+    </VerticalStackLayout>
+</ContentPage>

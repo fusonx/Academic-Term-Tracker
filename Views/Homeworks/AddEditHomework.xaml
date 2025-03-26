@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CapstoneMobileApp.Views.Homeworks.AddEditHomework">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" x:Name="SaveHomework" Clicked="HomeworkSaved_Clicked"></ToolbarItem>
+        <ToolbarItem Text="Cancel" x:Name="CancelHomework" Clicked="HomeworkCancel_Clicked"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <VerticalStackLayout Margin="5">
+        <VerticalStackLayout>
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="4" Margin="18">
+                <Label Text="Homework Name" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                <Editor x:Name="EditorHomeworkName" Grid.Column="1"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="4" Margin="18">
+                <Label Text="Homework Type" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"  />
+                <Editor x:Name="EditorHomeworkType" Grid.Column="1"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="4" Margin="18">
+                <Label Text="Due Date" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"  />
+                <DatePicker x:Name="DueDate" Grid.Column="1" />
+            </Grid>
+
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="4" Margin="18">
+                <Label Text="Due Date Notification" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                <Picker x:Name="PickerDueDateNotification" Grid.Column="1">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>On</x:String>
+                            <x:String>Off</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </Grid>
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

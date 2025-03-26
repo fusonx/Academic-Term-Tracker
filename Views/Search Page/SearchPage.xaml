@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:selectors="clr-namespace:CapstoneMobileApp.Services"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CapstoneMobileApp.Views.Search_Page.SearchPage"
+             Title="Search">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="TermTemplate">
+                <VerticalStackLayout Padding="9">
+                    <Border Padding="9" >
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Label Text="{Binding Name}" Grid.Row="0"></Label>
+                            <Label Text="{Binding DisplayTermDates}" Grid.Row="1"></Label>
+                        </Grid>
+                    </Border>
+                </VerticalStackLayout>
+            </DataTemplate>
+
+            <DataTemplate x:Key="CourseTemplate">
+                <VerticalStackLayout Padding="9">
+                    <Border Padding="9">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Label Text="{Binding DisplayCourseNameStatus}" Grid.Row="0"></Label>
+                            <Label Text="{Binding DisplayStartEndDate}" Grid.Row="1"></Label>
+                        </Grid>
+                    </Border>
+                </VerticalStackLayout>
+            </DataTemplate>
+
+            <DataTemplate x:Key="InstructorTemplate">
+                <VerticalStackLayout Padding="9">
+                    <Border Padding="9">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Label Text="{Binding Name}" Grid.Row="0"></Label>
+                            <Label Text="{Binding Phone}" Grid.Row="1"></Label>
+                            <Label Text="{Binding Email}" Grid.Row="2"></Label>
+                        </Grid>
+                    </Border>
+                </VerticalStackLayout>
+            </DataTemplate>
+
+            <DataTemplate x:Key="HomeworkTemplate">
+                <VerticalStackLayout Padding="9">
+                    <Border Padding="9">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Label Text="{Binding DisplayHwNameType}" Grid.Row="0"></Label>
+                            <Label Text="{Binding DisplayHomeworkDueDate}" Grid.Row="1"></Label>
+                        </Grid>
+                    </Border>
+                </VerticalStackLayout>
+            </DataTemplate>
+
+            <DataTemplate x:Key="AssessmentTemplate">
+                <VerticalStackLayout Padding="9">
+                    <Border Padding="9">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Label Text="{Binding DisplayAssessmentNameType}" Grid.Row="0"></Label>
+                            <Label Text="{Binding DisplayTestDate}" Grid.Row="1"></Label>
+                        </Grid>
+                    </Border>
+                </VerticalStackLayout>
+            </DataTemplate>
+
+            <DataTemplate x:Key="NoteTemplate">
+                <VerticalStackLayout Padding="9" Margin="5">
+                    <Border Padding="9">
+                        <Label Text="{Binding Content}"></Label>
+                    </Border>
+                </VerticalStackLayout>
+            </DataTemplate>
+
+            <selectors:SearchTemplateSelector x:Key="SearchTemplateSelector"
+                                              TermTemplate="{StaticResource TermTemplate}"
+                                              CourseTemplate="{StaticResource CourseTemplate}"
+                                              InstructorTemplate ="{StaticResource InstructorTemplate}"
+                                              HomeworkTemplate="{StaticResource HomeworkTemplate}"
+                                              AssessmentTemplate="{StaticResource AssessmentTemplate}"
+                                              NoteTemplate="{StaticResource NoteTemplate}"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <VerticalStackLayout Spacing="10" HorizontalOptions="CenterAndExpand">
+        <SearchBar x:Name="SearchInput"
+                   Text="{Binding SearchText, Mode=TwoWay}"
+                   Placeholder="Search..."/>
+
+        <CollectionView x:Name="ResultsDisplay"
+                        IsVisible="False"
+                        ItemsSource="{Binding ResultsCollection}"
+                        EmptyView="No results to display"
+                        ItemTemplate="{StaticResource SearchTemplateSelector}">
+
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>

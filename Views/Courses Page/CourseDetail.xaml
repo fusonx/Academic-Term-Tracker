@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CapstoneMobileApp.Courses_Page.CourseDetail"
+             Title="Course Detail">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edit" x:Name="EditCourse" Clicked="EditCourse_Clicked"></ToolbarItem>
+        <ToolbarItem Text="Delete" x:Name="DeleteCourse" Clicked="DeleteCourse_Clicked"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <FlexLayout Direction="Column"  AlignItems="Stretch" JustifyContent="SpaceBetween">
+        <VerticalStackLayout>
+            <VerticalStackLayout Margin="9" Spacing="4">
+                <Border BackgroundColor="#cae9f5">
+                    <Grid ColumnDefinitions="*,*" Margin="18">
+                        <Label Text="Course Name" FontAttributes="Bold" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                        <Label x:Name="CourseName" Grid.Column="1" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                    </Grid>
+                </Border>
+
+                <Border BackgroundColor="#cae9f5">
+                    <Grid ColumnDefinitions="*,*" Margin="18">
+                        <Label Text="Start - End Date" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                        <Label x:Name="CourseStartEndDate" Grid.Column="1" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                    </Grid>
+                </Border>
+
+                <Border BackgroundColor="#cae9f5">
+                    <Grid ColumnDefinitions="*,*" Margin="18">
+                        <Label Text="Due Date" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                        <Label x:Name="CourseDueDate"  Grid.Column="1" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                    </Grid>
+                </Border>
+
+                <Border BackgroundColor="#cae9f5">
+                    <Grid ColumnDefinitions="*, *" Margin="18">
+                        <Label Text="Course Status" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                        <Label x:Name="CourseStatus" Grid.Column="1" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                    </Grid>
+                </Border>
+
+                <Border BackgroundColor="#cae9f5">
+                    <Grid ColumnDefinitions="*, *" Margin="18">
+                        <Label Text="Start Notification" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                        <Label x:Name="StartNotification" Grid.Column="1" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                    </Grid>
+                </Border>
+
+                <Border BackgroundColor="#cae9f5">
+                    <Grid ColumnDefinitions="*, *" Margin="18">
+                        <Label Text="End Notification" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                        <Label x:Name="EndNotification" Grid.Column="1" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                    </Grid>
+                </Border>
+
+                <Border BackgroundColor="#fbd1a2">
+                    <Grid ColumnDefinitions="*,*" Margin="18">
+                        <Label Text="Homework" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                        <Image Source="arrow_right_solid.svg" MaximumHeightRequest="20" MaximumWidthRequest="20" HorizontalOptions="End" Grid.Column="1" />
+                    </Grid>
+
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnHomeworkBoxTapped" />
+                    </Border.GestureRecognizers>
+                </Border>
+
+                <Border BackgroundColor="#fbd1a2">
+                    <Grid ColumnDefinitions="*,*" Margin="18">
+                        <Label Text="Assessments" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                        <Image Source="arrow_right_solid.svg" MaximumHeightRequest="20" MaximumWidthRequest="20" HorizontalOptions="End" Grid.Column="1" />
+                    </Grid>
+
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnAssessmentsBoxTapped" />
+                    </Border.GestureRecognizers>
+                </Border>
+
+                <Border BackgroundColor="#fbd1a2">
+                    <Grid ColumnDefinitions="*,*" Margin="18">
+                        <Label Text="Notes" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                        <Image Source="arrow_right_solid.svg" MaximumHeightRequest="20" MaximumWidthRequest="20" HorizontalOptions="End" Grid.Column="1" />
+                    </Grid>
+
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnNotesBoxTapped" />
+                    </Border.GestureRecognizers>
+                </Border>
+
+                <VerticalStackLayout Spacing="4">
+                    <Border BackgroundColor="#fbd1a2">
+                        <Grid ColumnDefinitions="*,*" Margin="18">
+                            <Label Text="Instructor Information" x:Name="ToggleLabel" FontAttributes="Bold" />
+                            <Image x:Name="InstructorCaret" Source="caret_down_solid.svg" MaximumHeightRequest="20" MaximumWidthRequest="20" HorizontalOptions="End" Grid.Column="1" />
+                        </Grid>
+
+
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnInstructorBoxTapped" />
+                        </Border.GestureRecognizers>
+                    </Border>
+
+                    <StackLayout x:Name="HiddenInstructorContent" IsVisible="False" Spacing="5">
+                        <Border BackgroundColor="#cae9f5">
+                            <Grid ColumnDefinitions="*,*" Margin="18">
+                                <Label Text="Instructor Name" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                                <Label x:Name="InstructorName" Grid.Column="1" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                            </Grid>
+                        </Border>
+
+                        <Border Background="#cae9f5">
+                            <Grid ColumnDefinitions="*,*" Margin="18">
+                                <Label Text="Instructor Phone #" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                                <Label x:Name="InstructorNumber" Grid.Column="1" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                            </Grid>
+                        </Border>
+
+                        <Border Background="#cae9f5">
+                            <Grid ColumnDefinitions="*,2*" Margin="18">
+                                <Label Text="Instructor E-mail" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                                <Label x:Name="InstructorEmail" Grid.Column="1" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalTextAlignment="Center" />
+                            </Grid>
+                        </Border>
+                    </StackLayout>
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+
+        <Grid ColumnDefinitions="*,*">
+            <Button ImageSource="magnifying_glass_solid.svg" HeightRequest="45" BackgroundColor="#DEDEDE" Padding="9" Margin="9" Clicked="OnSearch_Clicked" FlexLayout.Grow="1" />
+            <Button ImageSource="file_lines_solid.svg" HeightRequest="45" Background="#DEDEDE" Padding="9" Margin="9" Clicked="OnReports_Clicked" FlexLayout.Grow="1" Grid.Column="1" />
+        </Grid>
+    </FlexLayout>
+</ContentPage>

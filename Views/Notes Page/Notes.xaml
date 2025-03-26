@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CapstoneMobileApp.Notes_Page.Notes"
+             Title="Notes">
+
+    <FlexLayout Direction="Column"  AlignItems="Stretch" JustifyContent="SpaceBetween">
+        <VerticalStackLayout Margin="9" Spacing="15">
+            <Border BackgroundColor="#cae9f5" >
+                <Label x:Name="NotesTitle" FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="18" />
+            </Border>
+
+            <CollectionView x:Name="AllNotesCollectionView"
+                    ItemsSource="{Binding Notes}"
+                    EmptyView="No notes to display."
+                    SelectionMode="None">
+
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="9" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border BackgroundColor="#fbd1a2" Padding="7">
+                            <StackLayout>
+                                <StackLayout>
+                                    <Label Text="{Binding Content}" FontSize="18" MaxLines="1"  LineBreakMode="TailTruncation" />
+                                    <Label Text="{Binding NoteDateCreated}" FontSize="14" TextColor="SlateGray" />
+                                </StackLayout>
+                            </StackLayout>
+
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnBoxTapped" />
+                            </Border.GestureRecognizers>
+                        </Border>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button ImageSource="plus_solid.svg" HeightRequest="45" BackgroundColor="#DEDEDE" Padding="9" Clicked="AddNotesButton_Clicked" />
+        </VerticalStackLayout>
+
+        <Grid ColumnDefinitions="*,*">
+            <Button ImageSource="magnifying_glass_solid.svg" HeightRequest="45" BackgroundColor="#DEDEDE" Padding="9" Margin="9" Clicked="OnSearch_Clicked" FlexLayout.Grow="1" />
+            <Button ImageSource="file_lines_solid.svg" HeightRequest="45" Background="#DEDEDE" Padding="9" Margin="9" Clicked="OnReports_Clicked" FlexLayout.Grow="1" Grid.Column="1" />
+        </Grid>
+    </FlexLayout>
+</ContentPage>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CapstoneMobileApp.Assessments_Page.AddAssessment"
+             Title="Add Assessment">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" x:Name="SaveAssessment" Clicked="SaveAssessment_Clicked"></ToolbarItem>
+        <ToolbarItem Text="Cancel" x:Name="CancelAssessment" Clicked="CancelAssessment_Clicked"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <VerticalStackLayout Spacing="10" Margin="9">
+        <Grid ColumnDefinitions="*,*" Margin="18">
+            <Label Text="Assessment Name" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+            <Editor x:Name="EditorAssessmentName" Grid.Column="1" />
+        </Grid>
+
+        <Grid ColumnDefinitions="*,*" Margin="18">
+            <Label Text="Assessment Type" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+            <Picker x:Name="PickerAssessmentType" Grid.Column="1">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Quiz</x:String>
+                        <x:String>Midterm</x:String>
+                        <x:String>Final</x:String>
+                        <x:String>Other</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+        </Grid>
+
+        <Grid ColumnDefinitions="*,*" Margin="18">
+            <Label Text="Test Date" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+            <DatePicker x:Name="TestDate" Grid.Column="1"/>
+        </Grid>
+
+        <Grid ColumnDefinitions="*,*" Margin="18">
+            <Label Text="Test Notification" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+            <Picker x:Name="PickerTestDate" Title="Please make a selection" Grid.Column="1">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>On</x:String>
+                        <x:String>Off</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>

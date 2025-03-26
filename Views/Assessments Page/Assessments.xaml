@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CapstoneMobileApp.Assessments_Page.Assessments"
+             Title="Assessments">
+
+    <FlexLayout Direction="Column" AlignItems="Stretch" JustifyContent="SpaceBetween">
+        <VerticalStackLayout>
+            <Border BackgroundColor="#cae9f5" Margin="9" >
+                <Label x:Name="CourseTitleAssessment" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="18" />
+            </Border>
+
+            <CollectionView x:Name="AssessmentsCollectionView"
+                    ItemsSource="{Binding Assessments}"
+                    Grid.Row="0"
+                    ItemsLayout="VerticalGrid, 1"
+                    EmptyView="No assessments to display."
+                    SelectionMode="None">
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border BackgroundColor="#fbd1a2" Padding="9" Margin="9">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Label Text="{Binding DisplayAssessmentNameType}" FontAttributes="Bold" Grid.Row="0" />
+                                <Label Text="{Binding DisplayTestDate}" Grid.Row="1" />
+                            </Grid>
+
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnBoxTapped" />
+                            </Border.GestureRecognizers>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+            <Button x:Name="AddAssessment" ImageSource="plus_solid.svg" HeightRequest="45" BackgroundColor="#DEDEDE" Padding="9" Margin="9" Clicked="AddAssessmentButton_Clicked" Grid.Row="1" />
+        </VerticalStackLayout>
+
+        <Grid ColumnDefinitions="*,*">
+            <Button ImageSource="magnifying_glass_solid.svg" HeightRequest="45" BackgroundColor="#DEDEDE" Padding="9" Margin="9" Clicked="OnSearch_Clicked" FlexLayout.Grow="1" />
+            <Button ImageSource="file_lines_solid.svg" HeightRequest="45" Background="#DEDEDE" Padding="9" Margin="9" Clicked="OnReports_Clicked" FlexLayout.Grow="1" Grid.Column="1" />
+        </Grid>
+    </FlexLayout>
+</ContentPage>

@@ -1,0 +1,1 @@
+C:\D424\CapstoneMobileApp\CapstoneMobileApp.csproj;x64

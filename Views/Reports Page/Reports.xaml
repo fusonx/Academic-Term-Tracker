@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:selectors="clr-namespace:CapstoneMobileApp.Services"
+             x:Class="CapstoneMobileApp.Views.Reports_Page.Reports"
+             Title="Reports">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="TermReportTemplate">
+                <VerticalStackLayout Margin="-1" Padding="9,0">
+                    <Border>
+                        <Grid ColumnDefinitions="*,*,*">
+                            <Label Text="{Binding TermName}" Grid.Column="0" HorizontalOptions="StartAndExpand" Padding="9"></Label>
+                            <Label Text="{Binding DisplayStartDate}" Grid.Column="1" HorizontalOptions="Center" Padding="9"></Label>
+                            <Label Text="{Binding DisplayEndDate}" Grid.Column="2" HorizontalOptions="EndAndExpand" Padding="9"></Label>
+                        </Grid>
+                    </Border>
+                </VerticalStackLayout>
+            </DataTemplate>
+
+            <DataTemplate x:Key="CourseReportTemplate">
+                <VerticalStackLayout Margin="-1" Padding="9,0">
+                    <Border>
+                        <Grid ColumnDefinitions="*,*,*">
+                            <Label Text="{Binding CourseName}" Grid.Column="0" Padding="9" HorizontalOptions="Start" VerticalOptions="Center"></Label>
+                            <Label Text="{Binding CourseStatus}" Grid.Column="1" Padding="9" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+                            <Grid Grid.Column="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="33" />
+                                    <RowDefinition Height="33" />
+                                </Grid.RowDefinitions>
+                                <Label Text="{Binding DisplayStartDate}" Padding="9" HorizontalOptions="End" Grid.Row="0" ></Label>
+                                <Label Text="{Binding DisplayEndDate}"  Padding="9" HorizontalOptions="End" Grid.Row="1" ></Label>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </VerticalStackLayout>
+            </DataTemplate>
+
+            <DataTemplate x:Key="AssessmentReportTemplate">
+                <VerticalStackLayout Margin="-1" Padding="9,0">
+                    <Border>
+                        <Grid ColumnDefinitions="*,*,*">
+                            <Label Text="{Binding AssessmentName}" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Padding="9"></Label>
+                            <Label Text="{Binding AssessmentType}" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" Padding="9"></Label>
+                            <Label Text="{Binding DisplayReportTestDate}" Grid.Column="2" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Padding="9"></Label>
+                        </Grid>
+                    </Border>
+                </VerticalStackLayout>
+            </DataTemplate>
+
+            <DataTemplate x:Key="HomeworkReportTemplate">
+                <VerticalStackLayout Margin="-1" Padding="9,0">
+                    <Border>
+                        <Grid ColumnDefinitions="*,*,*">
+                            <Label Text="{Binding HomeworkName}" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Padding="9"></Label>
+                            <Label Text="{Binding HomeworkType}" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" Padding="9"></Label>
+                            <Label Text="{Binding DisplayHomeworkDueDate}" Grid.Column="2" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Padding="9"></Label>
+                        </Grid>
+                    </Border>
+                </VerticalStackLayout>
+            </DataTemplate>
+
+            <selectors:ReportTemplateSelector x:Key="ReportTemplateSelector"
+                                              TermReportTemplate="{StaticResource TermReportTemplate}"
+                                              CourseReportTemplate="{StaticResource CourseReportTemplate}"
+                                              AssessmentReportTemplate="{StaticResource AssessmentReportTemplate}"
+                                              HomeworkReportTemplate="{StaticResource HomeworkReportTemplate}" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <FlexLayout Direction="Column"  AlignItems="Stretch" JustifyContent="SpaceBetween">
+        <VerticalStackLayout>
+            <VerticalStackLayout x:Name="ReportCriteria">
+                <Grid ColumnDefinitions="*,*" Margin="18">
+                    <Label Text="Generate a report for:" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                    <Picker x:Name="PickerReportType" Grid.Column="1" SelectedIndexChanged="OnReportTypeChanged">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Terms</x:String>
+                                <x:String>Courses</x:String>
+                                <x:String>Assessments</x:String>
+                                <x:String>Homework</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                </Grid>
+
+                <Grid ColumnDefinitions="*,*" Margin="18">
+                    <Label Text="Filter by:" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                    <Picker x:Name="PickerFilterBy" ItemsSource="{Binding PickerOptions}" SelectedIndexChanged="OnFilterChanged"  Grid.Column="1" IsEnabled="False" />
+                </Grid>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout x:Name="DateFilter" IsVisible="False">
+                <Grid ColumnDefinitions="*,*" Margin="18">
+                    <Label Text="Range Start:" />
+                    <DatePicker x:Name="StartDatePicker" Grid.Column="1" />
+                </Grid>
+
+                <Grid ColumnDefinitions="*,*" Margin="18">
+                    <Label Text="Range End:" />
+                    <DatePicker x:Name="EndDatePicker" Grid.Column="1" />
+                </Grid>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout x:Name="StatusFilter" IsVisible="False">
+                <Grid ColumnDefinitions="*,*" Margin="18">
+                    <Label Text="Status:" />
+                    <Picker x:Name="PickerStatus" Grid.Column="1">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>In progress</x:String>
+                                <x:String>Completed</x:String>
+                                <x:String>Dropped</x:String>
+                                <x:String>Plan to take</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                </Grid>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout x:Name="AssessmentTypeFilter" IsVisible="False">
+                <Grid ColumnDefinitions="*,*" Margin="18">
+                    <Label Text="Type:" />
+                    <Picker x:Name="PickerAssessmentType" Grid.Column="1">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Quiz</x:String>
+                                <x:String>Midterm</x:String>
+                                <x:String>Final</x:String>
+                                <x:String>Other</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                </Grid>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout x:Name="HomeworkTypeFilter" IsVisible="False" >
+                <Grid ColumnDefinitions="*,*" Margin="18">
+                    <Label Text="Type:" />
+                    <Editor x:Name="EditorHomeworkType" Grid.Column="1" />
+                </Grid>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout x:Name="FilterResults" IsVisible="False">
+                <Label x:Name="ReportTitle" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Padding="10,6" FontSize="Title"  FontAttributes="Bold" />
+
+                <CollectionView EmptyView="No results to display"
+                        ItemsSource="{Binding ReportResults}"
+                        ItemTemplate="{StaticResource ReportTemplateSelector}">
+                    <CollectionView.Header>
+                        <Grid ColumnDefinitions="*,*,*" Margin="9,0" BackgroundColor="#cae9f5">
+                            <Label x:Name="HeaderColumn1" Grid.Column="0" FontAttributes="Bold" HorizontalOptions="Start" Padding="9" />
+                            <Label x:Name="HeaderColumn2" Grid.Column="1" FontAttributes="Bold" HorizontalOptions="Center" Padding="9" />
+                            <Label x:Name="HeaderColumn3" Grid.Column="2" FontAttributes="Bold" HorizontalOptions="EndAndExpand" Padding="9" />
+                        </Grid>
+                    </CollectionView.Header>
+
+                </CollectionView>
+            </VerticalStackLayout>
+
+            <Button x:Name="GenerateReportButton" Text="Generate Report" HeightRequest="45" BackgroundColor="#DEDEDE" Padding="9" Margin="9" TextColor="Black" Clicked="OnGenerateReport_Clicked" />
+            <Button x:Name="ClearReportButton" Text="Clear Report" HeightRequest="45" Background="#DEDEDE" Padding="9" Margin="9" Clicked="OnClearReport_Clicked" IsEnabled="False" IsVisible="False" />
+        </VerticalStackLayout>
+
+        <Label x:Name="TimeStamp" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Padding="18,10" />
+    </FlexLayout>
+</ContentPage>

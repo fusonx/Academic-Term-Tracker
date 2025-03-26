@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CapstoneMobileApp.Terms_Page.AddEditTerm">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" x:Name="SaveTerm" Clicked="TermSaved_Clicked"></ToolbarItem>
+        <ToolbarItem Text="Cancel" x:Name="CancelTerm" Clicked="TermCancel_Clicked"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <VerticalStackLayout Margin="5">
+        <VerticalStackLayout>
+            <Grid ColumnDefinitions="3*,7*" ColumnSpacing="4" Margin="9">
+                <Label Text="Name" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Margin="9" />
+                <Editor x:Name="EditorTermName" Grid.Column="1"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="3*,7*" ColumnSpacing="4" Margin="9">
+                <Label Text="Start Date" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Margin="9" />
+                <DatePicker x:Name="TermStartDate" Margin="9" Grid.Column="1" />
+            </Grid>
+
+            <Grid ColumnDefinitions="3*,7*" ColumnSpacing="4" Margin="9">
+                <Label Text="End Date" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Margin="9" />
+                <DatePicker x:Name="TermEndDate" Margin="9" Grid.Column="1" />
+            </Grid>
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>
