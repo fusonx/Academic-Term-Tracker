@@ -34,6 +34,24 @@ Install [MySQL Server](https://www.mysql.com/)
 
 ### **Clone the Repository**  
 ```sh
-git clone https://github.com/fusonx/AcademicTermTracker.git
-cd AcademicTermTracker
+git clone https://github.com/fusonx/academic-term-tracker.git
+cd academic-term-tracker
+```
+
+### **Run the Application**
+**For Android/iOS**
+```sh
+dotnet build
+dotnet maui run android
+# or
+dotnet maui run ios
+```
+*(Ensure your device/emulator is running.)*
+
+**For Windows/macOS**
+```sh
+dotnet build
+dotnet maui run windows
+# or
+dotnet maui run macos
 ```
